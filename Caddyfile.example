@@ -1,0 +1,8 @@
+# Run Caddy on the VPS host; replace the hostname with your own domain.
+your-domain.example {
+    encode zstd gzip
+    request_body {
+        max_size 16KB
+    }
+    reverse_proxy 127.0.0.1:3000
+}
