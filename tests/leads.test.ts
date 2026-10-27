@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { test, afterEach } from 'node:test';
 import { leadSchema } from '../src/lib/lead-schema';
-import { checkCaptcha, deliverLead } from '../src/lib/delivery';
+import { deliverLead } from '../src/lib/delivery';
 
 const originalFetch=globalThis.fetch;
 const originalEnv={...process.env};
@@ -16,16 +16,7 @@ test('validates contact according to selected method',()=>{
   assert.equal(leadSchema.safeParse({...lead,method:'phone',contact:'12345'}).success,false);
 });
 test('requires consent and rejects excessive and control character input',()=>{
-  for (const invalid of [{consent:false},{description:'x'.repeat(2001)},{name:'a\u0000b'},{token:''},{requestId:'not-uuid'}]) assert.equal(leadSchema.safeParse({...lead,...invalid}).success,false);
-});
-test('CAPTCHA fails closed for failed, wrong hostname or wrong action results',async()=>{
-  process.env.TURNSTILE_HOSTNAMES='milkshake.example';process.env.TURNSTILE_SECRET_KEY='test';
-  for(const result of [{success:false},{success:true,action:'login',hostname:'milkshake.example'},{success:true,action:'lead',hostname:'attacker.example'}]){
-    globalThis.fetch=async()=>Response.json(result);
-    assert.equal(await checkCaptcha('token'),false);
-  }
-  globalThis.fetch=async()=>Response.json({success:true,action:'lead',hostname:'milkshake.example'});
-  assert.equal(await checkCaptcha('token'),true);
+  for (const invalid of [{consent:false},{description:'x'.repeat(2001)},{name:'a\u0000b'},{requestId:'not-uuid'}]) assert.equal(leadSchema.safeParse({...lead,...invalid}).success,false);
 });
 test('Telegram success requires explicit API confirmation',async()=>{
   process.env.TELEGRAM_BOT_TOKEN='dummy';process.env.TELEGRAM_CHAT_ID='-123';

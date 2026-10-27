@@ -1,4 +1,5 @@
 node_modules
+leads.txt
 .next
 .git
 .env*

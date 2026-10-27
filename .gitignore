@@ -1,4 +1,6 @@
 node_modules/
+leads.txt
+.pnpm-store/
 .next/
 out/
 .env*

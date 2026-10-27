@@ -1,0 +1,61 @@
+/* Shared geometry keeps the header in the same place in either theme. */
+[data-theme] .header { --gutter: clamp(22px, 5vw, 96px); box-sizing: border-box; width: 100%; max-width: 1600px; min-height: 104px; gap: 24px; border-bottom: 1px solid var(--line); }
+[data-theme] .header .logo { font-family: 'Nunito', 'Golos Text', sans-serif; font-size: 35px; font-weight: 900; letter-spacing: -.065em; line-height: 1; }
+[data-theme] .header > nav { gap: 26px; font-family: 'Golos Text', sans-serif; font-size: 13px; }
+[data-theme] .header .theme-switcher { box-sizing: border-box; padding: 3px; gap: 3px; border-width: 1px; }
+[data-theme] .header .theme-switcher button { box-sizing: border-box; min-height: 40px; padding: 8px 12px; gap: 7px; font-family: 'Golos Text', sans-serif; font-size: 11px; }
+[data-theme] .header-cta { box-sizing: border-box; min-height: 50px; padding: 16px 20px; font-family: 'Golos Text', sans-serif; font-size: 13px; border: 1.5px solid var(--line); }
+
+/* Accessible listbox: the trigger keeps focus while options are explored. */
+.form-select { position: relative; min-width: 0; margin-bottom: 28px; }
+.form-select-label { display: block; color: var(--ink); font-size: 13px; line-height: 1.4; }
+.lead-form input[type=hidden] { display: none; }
+.form-select-trigger { display: flex; justify-content: space-between; align-items: center; width: 100%; min-height: 52px; gap: 16px; padding: 12px 14px; margin-top: 7px; border: 1px solid var(--select-border, var(--line)); border-radius: var(--select-radius, 12px); background: var(--select-bg, var(--paper)); color: var(--ink); text-align: left; font-size: 16px; cursor: pointer; transition: border-color 160ms, background-color 160ms; }
+.form-select-trigger:hover, .form-select-trigger[aria-expanded=true] { border-color: var(--field-focus); background: var(--field-focus-background); }
+.form-select-trigger:focus-visible { outline: 2px solid var(--field-focus); outline-offset: 3px; }
+.form-select-chevron { width: 9px; height: 9px; flex: 0 0 9px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform 180ms ease; }
+.form-select-trigger[aria-expanded=true] .form-select-chevron { transform: translateY(2px) rotate(225deg); }
+.form-select-menu { position: absolute; z-index: 30; top: calc(100% + 7px); left: 0; right: 0; padding: 6px; border: 1px solid var(--select-border, var(--line)); border-radius: var(--select-radius, 12px); background: var(--select-bg, var(--paper)); box-shadow: 0 14px 36px #140b0630; }
+.form-select-option { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; padding: 10px 12px; border-radius: 8px; font-size: 15px; line-height: 1.35; cursor: pointer; }
+.form-select-option.is-active { background: var(--field-focus-background); }
+.form-select-option[aria-selected=true] { font-weight: 700; }
+.form-select-check { color: var(--field-focus); font-weight: 700; }
+[data-theme=pop] { --select-bg: #fffdfa; --select-border: #b4a393; --select-radius: 14px; }
+[data-theme=dark] { --select-bg: #111c23; --select-border: #667d8c; --select-radius: 10px; }
+[data-theme=dark] .form-select-menu { box-shadow: 0 16px 36px #0009; }
+
+/* Motion is short, optional, and leaves native disclosure semantics intact. */
+.faq-plus { transition: transform 200ms ease; }
+@media (prefers-reduced-motion: no-preference) {
+  .faq-list details[open] > p { animation: faq-answer-in 220ms cubic-bezier(.16,1,.3,1) both; }
+  .form-select-menu { animation: select-in 150ms ease-out both; transform-origin: top center; }
+}
+@keyframes faq-answer-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes select-in { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Small informational copy remains secondary but comfortably readable. */
+[data-theme] .section-label, [data-theme] .niche-label, [data-theme] .niche-top, [data-theme] .price-label, [data-theme] .pill { font-size: 12px; }
+[data-theme] .ticker > div { font-size: 12px; }
+[data-theme] .section-note, [data-theme] .pricing-note, [data-theme] .fine, [data-theme] .hero-note, [data-theme] .start-note, [data-theme] .demo-note, [data-theme] .niche-foot, [data-theme] .service-price > span, [data-theme] .pop-hero-price, [data-theme] .pop-hero-bottom { font-size: 13px; }
+[data-theme] .lead-form label, [data-theme] .form-select-label, [data-theme] .form-more summary { font-size: 14px; }
+[data-theme] .lead-form .consent, [data-theme] .form-result, [data-theme] .form-notice > span, [data-theme] .optional, [data-theme] .footer > span, [data-theme] .footer > a:not(.logo) { font-size: 13px; }
+[data-theme] .faq-list p { font-size: 15px; }
+[data-theme=dark] .faq-list p { font-size: 17px; }
+
+@media (max-width: 1180px) {
+  [data-theme] .header { gap: 18px; }
+  [data-theme] .header > nav { gap: 18px; }
+}
+@media (max-width: 700px) {
+  [data-theme] .header { --gutter: 22px; min-height: 82px; gap: 12px; padding-block: 15px; }
+  [data-theme] .header .logo { font-size: 30px; }
+  [data-theme] .header .theme-switcher button { min-height: 38px; padding: 7px 9px; font-size: 10px; gap: 4px; }
+  .form-select { margin-bottom: 25px; }
+  [data-theme=dark] .faq-list p { font-size: 15px; }
+  [data-theme=dark] .niche p { font-size: 13px; }
+}
+@media (max-width: 440px) {
+  [data-theme] .header { gap: 10px 0; padding-top: 16px; padding-bottom: 12px; }
+  [data-theme] .header .theme-switcher { order: 2; width: 100%; margin: 0; }
+  [data-theme] .header .theme-switcher button { flex: 1; }
+}

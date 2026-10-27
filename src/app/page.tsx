@@ -17,7 +17,7 @@ const niches = [
 function Flower({className = ''}:{className?:string}) {return <svg className={className} viewBox="0 0 200 200" fill="currentColor" aria-hidden="true"><path d="M100 0 115 52 150 13 148 67 187 50 165 93 200 100 160 117 187 150 138 146 150 187 112 160 100 200 85 151 50 187 53 137 13 150 37 110 0 100 43 83 13 50 65 55 50 13 87 41Z"/></svg>}
 function Arrow() {return <span aria-hidden="true">↗</span>}
 export default function Home() {
-  const formReady = Boolean(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID && process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && process.env.TURNSTILE_SECRET_KEY && process.env.TURNSTILE_HOSTNAMES && process.env.REDIS_URL && process.env.PRIVACY_READY === 'true');
+  const formReady = Boolean(process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID && process.env.PRIVACY_READY === 'true');
   return <>
     <a className="skip-link" href="#main">Перейти к содержимому</a>
     <header id="top" className="header wrap"><Link className="logo" href="/" aria-label="Milkshake Studio, начало">milkshake<span>.</span></Link><nav aria-label="Основная навигация"><a href="#services">Услуги</a><a href="#advantages">Подход</a><a href="#process">Процесс</a><a href="#pricing">Цены</a><a href="#faq">FAQ</a></nav><ThemeSwitcher/><a className="header-cta" href="#contact">Обсудить сайт <Arrow/></a><MobileNavigation/></header>
@@ -49,7 +49,7 @@ export default function Home() {
 
       <section className="section wrap faq-section" id="faq"><div><div className="section-label">06 / ВОПРОСЫ БЕЗ СТЕСНЕНИЯ</div><h2>А если<span className="orange">…</span></h2><p className="muted">Всё, что полезно знать до старта.</p></div><div className="faq-list">{faqs.map(([question,answer])=><details key={question}><summary>{question}<span className="faq-plus" aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div></section>
 
-      <section className="contact-section" id="contact"><div className="wrap contact-layout"><div><div className="section-label">07 / ДАВАЙТЕ ЗНАКОМИТЬСЯ</div><h2>Что будем<br/>создавать<span>?</span></h2><p>Расскажите о своём деле.<br/>Обсудим задачу, сроки и подходящий формат сайта.</p><Flower className="contact-flower"/><div className="contact-caption">ВАШ БИЗНЕС + НАШ ДИЗАЙН = <b>↗</b></div></div><LeadForm enabled={formReady} siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ''}/></div></section>
+      <section className="contact-section" id="contact"><div className="wrap contact-layout"><div><div className="section-label">07 / ДАВАЙТЕ ЗНАКОМИТЬСЯ</div><h2>Что будем<br/>создавать<span>?</span></h2><p>Расскажите о своём деле.<br/>Обсудим задачу, сроки и подходящий формат сайта.</p><Flower className="contact-flower"/><div className="contact-caption">ВАШ БИЗНЕС + НАШ ДИЗАЙН = <b>↗</b></div></div><LeadForm enabled={formReady}/></div></section>
     </main>
     <footer className="wrap footer"><Link className="logo" href="/">milkshake<span>.</span></Link><span>Сайты с характером. Сделано с вниманием.</span><Link href="/privacy">Персональные данные</Link><a href="#top" aria-label="Наверх">↑</a></footer>
   </>;

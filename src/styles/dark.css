@@ -1,4 +1,4 @@
-html[data-theme=dark] { color-scheme: dark; --paper: #080a0c; --ink: #f5f6f7; --accent: #80bbf7; --line: #ffffff30; --muted: #b3b9bf; }
+html[data-theme=dark] { color-scheme: dark; --paper: #080a0c; --ink: #f5f6f7; --accent: #80bbf7; --line: #ffffff30; --muted: #b3b9bf; --field-focus: #80bbf7; --field-focus-background: #172b39; }
 [data-theme=dark] body { font-family: Arial, 'Golos Text', sans-serif; }
 [data-theme=dark] .header { background: #080a0c; border-color: #ffffff26; min-height: 88px; }
 [data-theme=dark] .logo { font-size: 31px; font-weight: 800; letter-spacing: -.07em; }

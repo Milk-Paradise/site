@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap');
+@import './fonts.css';
 @import 'tailwindcss';
 
 :root {
@@ -61,6 +61,7 @@ p { line-height: 1.7; }
 .mobile-menu > nav { position: absolute; right: 0; top: 54px; display: flex; flex-direction: column; gap: 0; width: 230px; padding: 12px 20px; background: var(--paper); border: 1px solid var(--line); box-shadow: 0 20px 60px #0002; z-index: 12; }
 .mobile-menu nav a { display: block; padding-block: 13px; font-size: 14px; }
 .hero { position: relative; isolation: isolate; overflow: clip; width: 100%; padding-inline: var(--gutter); }
+.pop-hero { display: none; }
 .hero-media, .hero-shade { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
 .hero-media { background-repeat: no-repeat; background-size: cover; }
 .hero-shade { z-index: -1; }
@@ -158,6 +159,10 @@ p { line-height: 1.7; }
 .lead-form { min-width: 0; }
 .lead-form label { display: block; min-width: 0; font-size: 13px; }
 .lead-form input:not([type=checkbox]), .lead-form select, .lead-form textarea { display: block; width: 100%; min-width: 0; min-height: 52px; padding: 15px 0; margin-bottom: 28px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; color: var(--ink); font-size: 16px; }
+.lead-form input:not([type=checkbox]):focus, .lead-form select:focus, .lead-form textarea:focus { outline: none; border-bottom-color: var(--field-focus, var(--ink)); box-shadow: inset 0 -2px 0 var(--field-focus, var(--ink)); background-color: var(--field-focus-background, transparent); }
+@media (forced-colors: active) {
+  .lead-form input:not([type=checkbox]):focus, .lead-form select:focus, .lead-form textarea:focus { outline: 2px solid Highlight; outline-offset: -2px; }
+}
 .lead-form input::placeholder, .lead-form textarea::placeholder { color: var(--muted); opacity: 1; }
 .lead-form textarea { resize: vertical; min-height: 100px; }
 .lead-form select option { color: var(--ink); background: var(--paper); }

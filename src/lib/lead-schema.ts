@@ -8,7 +8,7 @@ export const leadSchema = z.object({
   description: clean(2000).default(''), business: clean(120).default(''),
   deadline: clean(120).default(''), features: clean(500).default(''),
   website: z.string().max(200).default(''), consent: z.literal(true),
-  token: z.string().min(1).max(2048), requestId: z.uuid(),
+  requestId: z.uuid(),
 }).superRefine((value,context)=>{
   const valid = value.method==='telegram' ? /^@?[a-zA-Z][a-zA-Z0-9_]{4,31}$/.test(value.contact)
     : value.method==='email' ? z.email().safeParse(value.contact).success

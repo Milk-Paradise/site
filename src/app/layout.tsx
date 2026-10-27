@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '@/styles/base.css';
 import '@/styles/pop.css';
 import '@/styles/dark.css';
+import '@/styles/polish.css';
 import { themeBootScript } from '@/config/theme';
 export const metadata: Metadata = {
   title: 'Milkshake Studio — сайты с характером',
