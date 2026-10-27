@@ -1,8 +1,8 @@
 # Развёртывание Milkshake Studio — 27 октября 2026
 
-Сайт опубликован на https://milk.termitsdigital.ru. В Dokploy создан проект `Milkshake Studio`, приложение `site`; исходники загружены архивом напрямую, сборка выполнена по Dockerfile. Репозиторий GitHub не обновлялся, поэтому новые локальные изменения сами на сервер не попадут.
+Сайт опубликован на https://milk.termitsdigital.ru. В Dokploy создан проект `Milkshake Studio`, приложение `site`; в качестве источника указан Git-репозиторий `https://github.com/Milk-Paradise/site.git`, ветка `main`, сборка выполняется по Dockerfile.
 
-В Dokploy указан порт 3000, HTTPS через Let's Encrypt, переменные окружения приложения и постоянный Docker-том `milkshake-leads` в `/data`. Контейнер работает от UID 1001 и проверено, что `/data` доступен ему на запись. Healthcheck `/api/health` вернул 200. Для обновления нужно загрузить новый архив в General → Provider → Drop и запустить Deploy либо отдельно настроить Git-провайдер.
+В Dokploy указан порт 3000, HTTPS через Let's Encrypt, переменные окружения приложения и постоянный Docker-том `milkshake-leads` в `/data`. Контейнер работает от UID 1001 и проверено, что `/data` доступен ему на запись. Healthcheck `/api/health` вернул 200. Для обновления отправьте изменения в ветку `main` и запустите Deploy в Dokploy. Автоматический webhook отдельно не настроен.
 
 Журнал: https://milk.termitsdigital.ru/leads-log, имя пользователя `admin`. Уникальный пароль production задан в переменной `LEAD_LOG_PASSWORD` в Dokploy и сохранён в локальном игнорируемом Git файле `.env.production.local`. Этот файл содержит и токен Telegram: не передавайте его другим и не загружайте в Git. Локальный пароль `2026` для production не подходит. Проверено: без пароля 401, с production-паролем 200. `/data/leads.txt` сохраняется в томе; настройте резервные копии и срок удаления данных.
 

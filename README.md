@@ -14,7 +14,7 @@ Next.js + React + TypeScript. Две темы с общим содержание
 
 ## Публикация
 
-Сайт развёрнут на `milk.termitsdigital.ru` в Dokploy. Домен, HTTPS и переменные окружения настроены; код загружен архивом, GitHub не обновлялся. Dockerfile публикует приложение на порту 3000. Сборка контейнера прошла; публичная доставка заявок пока не проверена и форма отключена. Индексация пока запрещена; после завершения проекта настройте robots, canonical, sitemap и Open Graph.
+Сайт развёрнут на `milk.termitsdigital.ru` в Dokploy. Домен, HTTPS и переменные окружения настроены. Источник приложения — публичный репозиторий `https://github.com/Milk-Paradise/site.git`, ветка `main`. После отправки изменений в GitHub запустите Deploy в Dokploy; автоматический webhook отдельно не настроен. Dockerfile публикует приложение на порту 3000. Публичная доставка заявок пока не проверена и форма отключена. Индексация пока запрещена; после завершения проекта настройте robots, canonical, sitemap и Open Graph.
 
 Политика на `/privacy` пока черновик. Подробности: [LAUNCH-READINESS.md](LAUNCH-READINESS.md). Команды проверок: `npm.cmd run typecheck`, `npm.cmd run lint`, `npm.cmd test`, `npm.cmd run build`.
 
